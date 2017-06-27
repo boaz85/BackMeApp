@@ -1,0 +1,10 @@
+.project
+.pydevproject
+.settings
+.coverage
+*.idea
+*.pyc
+
+backmeapp/settings/secrets.py
+
+.coverage
