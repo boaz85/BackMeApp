@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Back Me App</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.4/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="/static/vendors/bootstrap-multiselect/js/multiselect.js"></script>
+
+    <script src="/static/client-app/backmeapp.module.js"></script>
+    <script src="/static/client-app/common/services-data/services-dao.srv.js"></script>
+    <script src="/static/client-app/common/services-data/services-data.srv.js"></script>
+    <script src="/static/client-app/common/user-data/user-data.srv.js"></script>
+    <script src="/static/client-app/common/user-data/user-dao.srv.js"></script>
+    <script src="/static/client-app/common/email-groupers-select/email-groupers-select.ctrl.js"></script>
+    <script src="/static/client-app/common/email-groupers-select/email-groupers-select.drv.js"></script>
+    <script src="/static/client-app/components/main/main.drv.js"></script>
+    <script src="/static/client-app/components/main/main.ctrl.js"></script>
+    <script src="/static/client-app/components/page-not-found/page-not-found.drv.js"></script>
+    <script src="/static/client-app/components/page-not-found/page-not-found.ctrl.js"></script>
+    <script src="/static/client-app/components/sign-in/sign-in.drv.js"></script>
+    <script src="/static/client-app/components/sign-in/sign-in.ctrl.js"></script>
+    <script src="/static/client-app/components/sign-in/sign-in.srv.js"></script>
+    <script src="/static/client-app/components/sign-in/google-sign-in-initializer.srv.js"></script>
+    <script src="/static/client-app/components/top-bar/top-bar.drv.js"></script>
+    <script src="/static/client-app/components/top-bar/top-bar.ctrl.js"></script>
+    <script src="/static/client-app/components/top-bar/top-bar.fltr.js"></script>
+    <script src="/static/client-app/components/new-backup/new-backup.drv.js"></script>
+    <script src="/static/client-app/components/new-backup/new-backup.ctrl.js"></script>
+    <script src="/static/client-app/components/auth-modal/auth-modal.ctrl.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+<body ng-app="backMeAppModule">
+
+<script>
+    var ServiceEnum = {};
+    {% for name, val in services_types.items %}
+    ServiceEnum.{{ name }} = {{ val }};{% endfor %}
+
+</script>
+
+<div class="container-fluid">
+
+<top-bar></top-bar>
+<div ng-view></div>
+
+
+</div>
+</body>
+</html>

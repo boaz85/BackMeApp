@@ -1,0 +1,79 @@
+<div class="new-backup-page">
+    <h2>New Backup</h2>
+
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <div>Choose your Email service</div>
+
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="emaiServicesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="{{ vm.selectedEmailService.medium_logo_url }}"><span> {{ vm.selectedEmailService.display }}</span>
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="emaiServicesDropdown">
+                    <li ng-repeat="service in vm.emailServices" ng-click="vm.selectEmailService(service)">
+                        <div class="service-logo-container">
+                            <img src="{{ service.medium_logo_url }}">
+                            <span>{{ service.display }}</span>
+                        </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <alert type="danger" ng-show="vm.noEmailServiceChosen">Please choose an Email service</alert>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <a href="#" ng-click="vm.startEmailAuthentication()" ng-show="vm.emailAuthRequired">Allow BackMeApp to access your Emails on {{ vm.selectedEmailService.display }}.</a>
+                <alert type="success" ng-show="vm.emailAuthSucceed">Permission was granted</alert>
+            </div>
+        </div>
+
+        <div class="row" ng-if="vm.allEmailGroupers">
+
+                <email-groupers-select id="new-backup"
+                                       all-groupers="vm.allEmailGroupers"
+                                       selected-groupers="vm.selectedEmailGroupers">
+
+                </email-groupers-select>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <div>Choose your storage service</div>
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <img src="{{ vm.selectedStorageService.medium_logo_url }}"><span> {{ vm.selectedStorageService.display }}</span>
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li ng-repeat="service in vm.storageServices" ng-click="vm.selectStorageService(service)">
+                        <div class="service-logo-container">
+                            <img src="{{ service.medium_logo_url }}">
+                            <span>{{ service.display }}</span>
+                        </div>
+                    </li>
+                  </ul>
+                </div>
+                <alert type="danger" ng-show="vm.noStorageServiceChosen">Please choose a storage service</alert>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 col-md-offset-5">
+                <a href="#" ng-click="vm.startStorageAuthentication()" ng-show="vm.storageAuthRequired">Allow BackMeApp to access your storage on {{ vm.selectedStorageService.display }}.</a>
+                <alert type="success" ng-show="vm.storageAuthSucceed">Permission was granted</alert>
+            </div>
+        </div>
+
+</div>
+
+<!--<script type="text/ng-template" id="noServiceAlert.html">-->
+    <!--<div class="alert" style="background-color:#fa39c3;color:white" role="alert">-->
+        <!--<div ng-transclude></div>-->
+    <!--</div>-->
+<!--</script>-->
